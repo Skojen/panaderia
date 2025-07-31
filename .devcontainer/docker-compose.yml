@@ -1,0 +1,46 @@
+services:
+  db:
+    image: postgres:15
+    container_name: panaderia-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: panaderia
+    ports:
+      - "5434:5432"
+    volumes:
+      - ../backend/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  backend:
+    build:
+      context: ../backend
+    container_name: panaderia-backend
+    ports:
+      - "3010:3000"
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: panaderia
+      NODE_ENV: development
+    depends_on:
+      - db
+    volumes:
+      - ..:/workspace:cached
+    working_dir: /workspace/backend
+    command: npm run dev
+
+  frontend:
+    build:
+      context: ../frontend
+      args:
+        REACT_APP_API_URL: 	http://localhost:3010
+    container_name: panaderia-frontend
+    ports:
+      - "8090:80"
+    depends_on:
+      - backend
+
+
+

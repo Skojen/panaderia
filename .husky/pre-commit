@@ -1,0 +1,6 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npm run lint:backend
+npm run lint:frontend
+npm run format

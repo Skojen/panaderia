@@ -1,0 +1,18 @@
+# === Terraform state files ===
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# === Terraform plan files ===
+*.tfplan
+
+# === Terraform variable files (ambientes locales) ===
+terraform.*.tfvars
+!terraform.example.tfvars 
+
+# === Terraform backups ===
+*.backup
+crash.log
+
+# === Output logs ===
+output.log

@@ -1,0 +1,17 @@
+{
+  "name": "panaderia",
+  "version": "1.0.0",
+  "description": "Proyecto backend para Panadería",
+  "type": "module",
+  "scripts": {
+    "lint:backend": "eslint ./backend --ext .js,.ts",
+    "lint:frontend": "eslint ./frontend --ext .js,.ts",
+    "format": "prettier --write .",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0",
+    "husky": "^9.0.0"
+  }
+}

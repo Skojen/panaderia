@@ -1,0 +1,36 @@
+{
+  "type": "module",
+  "author": {
+    "name": "Omar Moroso"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "dotenv -e .env.local -- nodemon src/index.js",
+    "start": "node src/index.js",
+    "staging": "dotenv -e .env.staging -- node src/index.js",
+    "test": "dotenv -e .env.test -- node --test",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier . --check",
+    "format:fix": "prettier . --write"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.32.0",
+    "dotenv-cli": "^9.0.0",
+    "eslint": "^9.32.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.3",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.6.2",
+    "supertest": "^7.1.4"
+  }
+}

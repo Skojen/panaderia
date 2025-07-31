@@ -1,0 +1,27 @@
+{
+  "name": "Panaderia Workspace",
+  "dockerComposeFile": ["docker-compose.yml"],
+  "service": "backend",
+  "workspaceFolder": "/workspace",
+  "forwardPorts": [3010, 8090, 5434],
+  "shutdownAction": "stopCompose",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      },
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "humao.rest-client",
+        "ms-azuretools.vscode-docker",
+        "cweijan.vscode-postgresql",
+        "pkief.material-icon-theme",
+        "visualstudioexptteam.vscodeintellicode",
+        "ms-ceintl.vscode-language-pack-es",
+        "xabikos.javascriptsnippets",
+        "msjsdiag.vscode-react-native"
+      ]
+    }
+  }
+}

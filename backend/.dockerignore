@@ -1,0 +1,35 @@
+# Node modules
+node_modules
+npm-debug.log
+yarn.lock
+pnpm-lock.yaml
+
+# Build output (si ya existe)
+build
+
+# Git / editor
+.git
+.gitignore
+.DS_Store
+.env
+.env.*
+.vscode
+.idea
+.prettierrc.js
+.prettierignore
+
+# Tests / coverage
+coverage
+*.test.js
+*.spec.js
+tests
+
+# Otros
+*.md
+Dockerfile
+cloudbuild.yaml
+misc
+db
+*.sql
+*.yml
+Makefile

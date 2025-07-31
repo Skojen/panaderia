@@ -1,0 +1,16 @@
+### Obtener productos
+GET http://localhost:3000/productos
+
+###
+
+### Crear pedido
+POST http://localhost:3000/pedido
+Content-Type: application/json
+
+{
+  "cliente": "Juan Pérez",
+  "productos": [
+    { "producto_id": 1, "cantidad": 2 },
+    { "producto_id": 2, "cantidad": 30 }
+  ]
+}

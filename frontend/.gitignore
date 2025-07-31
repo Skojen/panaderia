@@ -1,0 +1,25 @@
+# Node modules
+node_modules/
+
+# Environment files
+.env*
+!.env.example
+
+# SQLite DB (dev/test)
+*.sqlite
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Coverage reports
+coverage/
+
+# VSCode settings
+.vscode/
+
+# Jest cache
+jest-cache/
+jest-config/
+tmp/
