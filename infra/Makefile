@@ -4,7 +4,12 @@ ENV ?= dev
 TFVARS=terraform.$(ENV).tfvars
 TFVARS_EXAMPLE=terraform.example.tfvars
 
-.PHONY: init plan apply destroy output clean check-tfvars
+# Extrae project_id automáticamente desde el archivo tfvars
+PROJECT_ID := $(shell grep -E '^project_id' $(TFVARS) | sed 's/.*=\s*"\(.*\)"/\1/')
+
+.PHONY: init plan apply destroy output clean check-tfvars \
+        build-backend push-backend build-frontend push-frontend \
+        deploy-prod lint fmt validate login refresh all default
 
 default: plan
 
@@ -15,9 +20,9 @@ check-tfvars:
 		cp $(TFVARS_EXAMPLE) $(TFVARS); \
 	fi
 
+# === Inicialización y validación ===
 all: init validate plan
 
-# === Inicializar Terraform ===
 init: check-tfvars
 	$(TF) init
 
@@ -46,10 +51,27 @@ refresh: check-tfvars
 output:
 	$(TF) output
 
-# === Autentificación ===
+# === Build & Push Imágenes ===
+
+build-backend:
+	cd ../backend && docker build -t gcr.io/$(PROJECT_ID)/panaderia-backend .
+
+build-frontend:
+	cd ../frontend && docker build -t gcr.io/$(PROJECT_ID)/panaderia-frontend .
+
+push-backend:
+	docker push gcr.io/$(PROJECT_ID)/panaderia-backend
+
+push-frontend:
+	docker push gcr.io/$(PROJECT_ID)/panaderia-frontend
+
+# === Flujo completo de despligue ===
+deploy:  check-tfvars build-backend build-frontend push-backend push-frontend init validate plan apply
+
+# === Autentificación GCP ===
 login:
 	gcloud auth application-default login
 
-# === Limpieza ===
+# === Limpieza local ===
 clean:
 	rm -rf .terraform terraform.tfstate* terraform.*.tfvars.backup

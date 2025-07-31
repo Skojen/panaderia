@@ -1,3 +1,4 @@
-output "service_account_email" {
-  value = var.create_service_account ? google_service_account.backend[0].email : null
+output "email" {
+  value       = try(google_service_account.this[0].email, "")
+  description = "Email de la cuenta de servicio creada (vacío si no se creó)"
 }
