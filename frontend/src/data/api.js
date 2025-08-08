@@ -6,11 +6,11 @@ const loadApiUrl = async () => {
   try {
     const response = await fetch('/env.json');
     const config = await response.json();
-    cachedApiUrl = config.API_URL;
+    cachedApiUrl = config.REACT_APP_API_URL;
     return cachedApiUrl;
   } catch (error) {
-    console.error('Error cargando API_URL desde env.json:', error);
-    throw new Error('No se pudo cargar API_URL');
+    console.error('Error cargando REACT_APP_API_URL desde env.json:', error);
+    throw new Error('No se pudo cargar REACT_APP_API_URL');
   }
 };
 

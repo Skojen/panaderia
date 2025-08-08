@@ -1,8 +1,9 @@
 {
+  "name": "panaderia-backend",
+  "version": "1.0.0",
+  "private": true,
   "type": "module",
-  "author": {
-    "name": "Omar Moroso"
-  },
+  "description": "Backend para carrito de compras",
   "main": "src/index.js",
   "scripts": {
     "dev": "dotenv -e .env.local -- nodemon src/index.js",
@@ -32,5 +33,7 @@
     "nodemon": "^3.1.10",
     "prettier": "^3.6.2",
     "supertest": "^7.1.4"
-  }
+  },
+  "author": "Omar Moroso",
+  "license": "MIT"
 }

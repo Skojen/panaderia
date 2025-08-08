@@ -10,10 +10,6 @@ RUN npm install
 # Ahora copiamos el resto del código
 COPY . .
 
-# Argumento que se inyectará en el build de React
-ARG REACT_APP_API_URL
-ENV REACT_APP_API_URL=$REACT_APP_API_URL
-
 # Compilamos el frontend (embeddeará REACT_APP_API_URL si se usa en el código)
 RUN npm run build
 
@@ -21,7 +17,7 @@ RUN npm run build
 FROM nginx:alpine
 
 # Copiamos el build generado
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
 
 # Usamos nuestra propia configuración de Nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf

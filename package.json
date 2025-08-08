@@ -1,17 +1,31 @@
 {
   "name": "panaderia",
   "version": "1.0.0",
-  "description": "Proyecto backend para Panadería",
+  "description": "Proyecto Panadería",
   "type": "module",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
   "scripts": {
-    "lint:backend": "eslint ./backend --ext .js,.ts",
-    "lint:frontend": "eslint ./frontend --ext .js,.ts",
-    "format": "prettier --write .",
-    "prepare": "husky install"
+    "lint:backend": "npm run -w backend lint",
+    "lint:frontend": "npm run -w frontend lint",
+    "format:backend": "npm run -w backend format",
+    "format:frontend": "npm run -w frontend format",
+    "prepare": "husky"
   },
   "devDependencies": {
-    "eslint": "^9.0.0",
-    "prettier": "^3.0.0",
-    "husky": "^9.0.0"
-  }
+    "husky": "^9.0.0",
+    "lint-staged": "^16.1.4"
+  },
+  "lint-staged": {
+    "backend/**/*.{js,cjs,mjs}": [
+      "eslint --cache --config ./backend/eslint.config.js --fix"
+    ],
+    "frontend/**/*.{js,jsx,cjs,mjs}": [
+      "eslint --cache --config ./frontend/eslint.config.js --fix"
+    ]
+  },
+  "author": "Omar Moroso",
+  "license": "MIT"
 }

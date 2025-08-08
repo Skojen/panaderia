@@ -1,9 +1,9 @@
 #!/bin/sh
 
-echo "Inyectando API_URL en /env.json → ${API_URL}"
+echo "Generando /usr/share/nginx/html/env.json..."
 
 cat <<EOF > /usr/share/nginx/html/env.json
 {
-  "API_URL": "${API_URL}"
+  "REACT_APP_API_URL": "${REACT_APP_API_URL}"
 }
 EOF

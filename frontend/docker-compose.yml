@@ -3,8 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        REACT_APP_API_URL: 	http://localhost:3000
+    environment:
+      REACT_APP_API_URL: http://localhost:3000
     container_name: panaderia-frontend
     ports:
       - "8080:80"
